@@ -5,6 +5,8 @@ from django.http import HttpResponse
 def index(request):
     print('mainAPP index~~')
     return render(request, 'main/main.html')
-from django.shortcuts import render
 
+def contact(request):
+    print('mainAPP contact')
+    return render(request, 'main/contact.html')
 # Create your views here.
