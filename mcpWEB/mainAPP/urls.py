@@ -3,5 +3,5 @@ from mainAPP import views
 
 urlpatterns = [
     path('index/',views.index, name='main'),
-    path('contact/',views.index, name='contact'),
+    path('contact/',views.contact, name='contact'),
 ]
