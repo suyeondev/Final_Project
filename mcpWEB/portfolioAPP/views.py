@@ -9,3 +9,7 @@ def index(request):
 def songInfo(request):
     print('portfolioAPP songinfo~~')
     return render(request, 'portfolio/songinfo.html')
+
+def survey(request):
+    print('mainAPP survey')
+    return render(request, 'portfolio/survey.html')

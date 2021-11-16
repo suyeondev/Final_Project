@@ -6,7 +6,5 @@ def index(request):
     print('mainAPP index~~')
     return render(request, 'main/main.html')
 
-def contact(request):
-    print('mainAPP contact')
-    return render(request, 'main/contact.html')
+
 # Create your views here.

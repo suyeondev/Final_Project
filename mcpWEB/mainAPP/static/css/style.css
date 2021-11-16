@@ -481,12 +481,6 @@ How section
 	margin-bottom: 25px;
 }
 
-.how-item .hi-icon img {
-	position: absolute;
-	right: -8px;
-	bottom: 0;
-}
-
 .how-item h4 {
 	margin-bottom: 25px;
 }
@@ -590,6 +584,7 @@ Premium section
 .premium-item p {
 	margin-bottom: 0;
 }
+
 
 /* ----------------
 Responsive

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+{% load static %}
+	<title>Music Makes Money</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="SolMusic HTML Template">
+	<meta name="keywords" content="music, html">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- Favicon -->
+	<link rel="icon" type="image/png" href="{%static 'img/logo_3m.png' %}">
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
+ 
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="{%static 'css/bootstrap.min.css' %}"/>
+	<link rel="stylesheet" href="{%static 'css/font-awesome.min.css' %}"/>
+	<link rel="stylesheet" href="{%static 'css/owl.carousel.min.css' %}"/>
+	<link rel="stylesheet" href="{%static 'css/slicknav.min.css' %}"/>
+
+	<!-- Main Stylesheets -->
+	<link rel="stylesheet" href="{%static 'css/style.css' %}"/>
+
+
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+</head>
+<body>
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+
+	<!-- Header section -->
+	<header class="header-section clearfix">
+		<a href="http://127.0.0.1:8000/main/index/" class="site-logo">
+			<img src="{%static 'img/site_logo_3m.png' %}" height="32px" width="120px" alt="3m로고이미지">
+		</a>
+		<div class="header-right">
+			<a href="#" class="hr-btn">Help</a>
+			<span>|</span>
+			<div class="user-panel">
+				<a href="" class="login">Login</a>
+
+			</div> 
+		</div>
+		<ul class="main-menu">
+			<li><a href="http://127.0.0.1:8000/main/index/">Home</a></li>
+			<li><a href="http://127.0.0.1:8000/main/index/#why_3m">About 3M</a></li>
+			<li><a href="http://127.0.0.1:8000/portfolio/survey/">Portfolio</a></li>
+			<li><a href="contact.html">Contact</a></li>
+		</ul>
+	</header>
+	<!-- Header section end -->
+
+	<!-- Contact section -->
+	<body>
+		<div class="myTypeArea">
+                <div class="bgM"></div><div class="bgP"></div><!-- bgM, bgP에 operate 클래스 추가시 동작 이미지로 변경됨 -->
+				<h2 class="typeTitle">당신에게 꼭 맞는 포트폴리오를 추천해드립니다</h2>
+                <p class="typeDesc">투자목적, 운용방식, 상품종류에 따라 유형별포트폴리오를 제시해 드립니다.  원하시는 항목을 선택해주세요! 중복선택 가능</p>
+                <button type="button" class="typeBtn">포트폴리오 찾기</button>
+                <div class="typeForm boxBg" style="display:none">
+                    <ul class="formLst">
+                        <li>
+                            <strong class="tit">투자목적</strong>
+                            <div class="sel">
+                                <span class="check on"><input type="checkbox" id="select1_1" /><label for="select1_1">여유자금</label></span>
+                                <span class="check"><input type="checkbox" id="select1_2" /><label for="select1_2">절세</label></span>
+                                <span class="check"><input type="checkbox" id="select1_3" /><label for="select1_3">은퇴자금</label></span>
+                            </div>
+                        </li>
+                        <li>
+                            <strong class="tit">운용방식 <a href="#" class="info" id="492001_popup01" data-bind="click: on.popup01">용어안내</a></strong>
+                            <div class="sel">
+                                <span class="check"><input type="checkbox" id="select2_1" /><label for="select2_1">장기투자</label></span>
+                                <span class="check"><input type="checkbox" id="select2_2" /><label for="select2_2">전문가운용</label></span>
+                                <span class="check"><input type="checkbox" id="select2_3" /><label for="select2_3">Active운용</label></span>
+                            </div>
+                        </li>
+                        <li>
+                            <strong class="tit">편입상품</strong>
+                            <div class="sel">
+                                <span class="check"><input type="checkbox" id="select3_1" /><label for="select3_1">펀드</label></span>
+                                <span class="check"><input type="checkbox" id="select3_2" /><label for="select3_2">ELS/DLS</label></span>
+                                <span class="check"><input type="checkbox" id="select3_3" /><label for="select3_3">ETF</label></span>
+                                <span class="check"><input type="checkbox" id="select3_4" /><label for="select3_4">Wrap</label></span>
+                                <span class="check"><input type="checkbox" id="select3_5" /><label for="select3_5">채권</label></span>
+                                <span class="check"><input type="checkbox" id="select3_6" /><label for="select3_6">주식</label></span>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="ctrlBtn">
+                        <button type="button" class="reset icoBg" data-bind="click: on.init01">초기화</button>
+                        <button type="button" class="search icoBg" id="492001_retrieve01" data-bind="click: on.retrieve01">조회</button>
+                    </div>
+                </div>
+                <div class="typeBox boxBg"><!-- typeBox에 operate 클래스 추가시 버튼을 동작할 수 없도록 흰색 배경 깔림 -->
+                    <p class="boxTxt icoBg">이곳의 포트폴리오명을 선택하시면<br /> 포트폴리오 상세 내용을 먼저 확인하실 수 있습니다.</p>
+                    <div class="boxLst">
+                        <button type="button" class="type type01" id="btn01"><span>투자자산<br /> 전략부 추천</span></button>
+                        <button type="button" class="type type02" id="btn02"><span>EMA</span></button>
+                        <button type="button" class="type type03" id="btn03"><span>연금펀드</span></button>
+                        <button type="button" class="type type06" id="btn06"><span>Life Stage</span></button>
+                        <button type="button" class="type type07" id="btn07"><span>Life Stage<br /> (연령별)</span></button>
+                        <button type="button" class="type type08" id="btn08"><span>내게 맞는<br /> 상품 추천</span></button>
+                    </div>
+                </div>
+                <a href="#" class="allBtn boxBg" id="492001_popup02" data-bind="click: on.popup02">유형별 추천포트폴리오 전체보기</a>
+            </div>
+            <div class="bgColor mytype"></div>
+
+	</body>
+	<!-- Blog section end -->
+
+	<!-- Footer section -->
+	<footer class="footer-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-6 col-lg-7 order-lg-2">
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="footer-widget">
+								<h2>About us</h2>
+								<ul>
+									<li><a href="">Our Story</a></li>
+									<li><a href="">Sol Music Blog</a></li>
+									<li><a href="">History</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="footer-widget">
+								<h2>Products</h2>
+								<ul>
+									<li><a href="">Music</a></li>
+									<li><a href="">Subscription</a></li>
+									<li><a href="">Custom Music</a></li>
+									<li><a href="">Footage</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="footer-widget">
+								<h2>Playlists</h2>
+								<ul>
+									<li><a href="">Newsletter</a></li>
+									<li><a href="">Careers</a></li>
+									<li><a href="">Press</a></li>
+									<li><a href="">Contact</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-6 col-lg-5 order-lg-1">
+					<img src="{%static 'img/logo.png' %}" alt="">
+					<div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
+					<div class="social-links">
+						<a href=""><i class="fa fa-instagram"></i></a>
+						<a href=""><i class="fa fa-pinterest"></i></a>
+						<a href=""><i class="fa fa-facebook"></i></a>
+						<a href=""><i class="fa fa-twitter"></i></a>
+						<a href=""><i class="fa fa-youtube"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- Footer section end -->
+	
+	<!--====== Javascripts & Jquery ======-->
+	<script src="{%static 'js/jquery-3.2.1.min.js' %}"></script>
+	<script src="{%static 'js/bootstrap.min.js' %}"></script>
+	<script src="{%static 'js/jquery.slicknav.min.js' %}"></script>
+	<script src="{%static 'js/owl.carousel.min.js' %}"></script>
+	<script src="{%static 'js/mixitup.min.js' %}"></script>
+	<script src="{%static 'js/main.js' %}"></script>
+
+	</body>
+</html>
