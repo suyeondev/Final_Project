@@ -64,37 +64,25 @@
                 <div class="bgM"></div><div class="bgP"></div><!-- bgM, bgP에 operate 클래스 추가시 동작 이미지로 변경됨 -->
 				<h2 class="typeTitle">당신에게 꼭 맞는 포트폴리오를 추천해드립니다</h2>
                 <p class="typeDesc">투자목적, 운용방식, 상품종류에 따라 유형별포트폴리오를 제시해 드립니다.  원하시는 항목을 선택해주세요! 중복선택 가능</p>
-                <button type="button" class="typeBtn">포트폴리오 찾기</button>
-                <div class="typeForm boxBg" style="display:none">
+                <p class="typeDesc">당신의 투자 기간은?</p>
+				<button type="button" class="typeBtn">장기</button>
+				<button type="button" class="typeBtn">단기</button>
+                <div class="typeForm boxBg" ">
                     <ul class="formLst">
                         <li>
-                            <strong class="tit">투자목적</strong>
+							<p class="typeDesc">당신의 투자 성향은?</p>
+                            <strong class="tit">장기</strong>
                             <div class="sel">
-                                <span class="check on"><input type="checkbox" id="select1_1" /><label for="select1_1">여유자금</label></span>
-                                <span class="check"><input type="checkbox" id="select1_2" /><label for="select1_2">절세</label></span>
-                                <span class="check"><input type="checkbox" id="select1_3" /><label for="select1_3">은퇴자금</label></span>
+                                <span class="check on"><input type="checkbox" id="select1_1" /><label for="select1_1">공격형</label></span>
+                                <span class="check"><input type="checkbox" id="select1_2" /><label for="select1_2">안정형</label></span>
                             </div>
                         </li>
                         <li>
-                            <strong class="tit">운용방식 <a href="#" class="info" id="492001_popup01" data-bind="click: on.popup01">용어안내</a></strong>
+                            <strong class="tit">단기 </strong>
                             <div class="sel">
-                                <span class="check"><input type="checkbox" id="select2_1" /><label for="select2_1">장기투자</label></span>
-                                <span class="check"><input type="checkbox" id="select2_2" /><label for="select2_2">전문가운용</label></span>
-                                <span class="check"><input type="checkbox" id="select2_3" /><label for="select2_3">Active운용</label></span>
-                            </div>
-                        </li>
-                        <li>
-                            <strong class="tit">편입상품</strong>
-                            <div class="sel">
-                                <span class="check"><input type="checkbox" id="select3_1" /><label for="select3_1">펀드</label></span>
-                                <span class="check"><input type="checkbox" id="select3_2" /><label for="select3_2">ELS/DLS</label></span>
-                                <span class="check"><input type="checkbox" id="select3_3" /><label for="select3_3">ETF</label></span>
-                                <span class="check"><input type="checkbox" id="select3_4" /><label for="select3_4">Wrap</label></span>
-                                <span class="check"><input type="checkbox" id="select3_5" /><label for="select3_5">채권</label></span>
-                                <span class="check"><input type="checkbox" id="select3_6" /><label for="select3_6">주식</label></span>
-                            </div>
-                        </li>
-                    </ul>
+                                <span class="check"><input type="checkbox" id="select2_1" /><label for="select2_1">공격형</label></span>
+                                <span class="check"><input type="checkbox" id="select2_2" /><label for="select2_2">안정형</label></span>
+
                     <div class="ctrlBtn">
                         <button type="button" class="reset icoBg" data-bind="click: on.init01">초기화</button>
                         <button type="button" class="search icoBg" id="492001_retrieve01" data-bind="click: on.retrieve01">조회</button>
@@ -103,20 +91,18 @@
                 <div class="typeBox boxBg"><!-- typeBox에 operate 클래스 추가시 버튼을 동작할 수 없도록 흰색 배경 깔림 -->
                     <p class="boxTxt icoBg">이곳의 포트폴리오명을 선택하시면<br /> 포트폴리오 상세 내용을 먼저 확인하실 수 있습니다.</p>
                     <div class="boxLst">
-                        <button type="button" class="type type01" id="btn01"><span>투자자산<br /> 전략부 추천</span></button>
-                        <button type="button" class="type type02" id="btn02"><span>EMA</span></button>
-                        <button type="button" class="type type03" id="btn03"><span>연금펀드</span></button>
-                        <button type="button" class="type type06" id="btn06"><span>Life Stage</span></button>
-                        <button type="button" class="type type07" id="btn07"><span>Life Stage<br /> (연령별)</span></button>
-                        <button type="button" class="type type08" id="btn08"><span>내게 맞는<br /> 상품 추천</span></button>
+                        <button type="button" class="type type01" id="btn01"><span>장기<br /> 안정형</span></button>
+                        <button type="button" class="type type02" id="btn02"><span>장기<br /> 공격형</span></button>
+                        <button type="button" class="type type07" id="btn07"><span>단기<br /> 안정형</span></button>
+                        <button type="button" class="type type08" id="btn08"><span>단기<br /> 공격형</span></button>
                     </div>
                 </div>
-                <a href="#" class="allBtn boxBg" id="492001_popup02" data-bind="click: on.popup02">유형별 추천포트폴리오 전체보기</a>
+
             </div>
             <div class="bgColor mytype"></div>
 
 	</body>
-	<!-- Blog section end -->
+
 
 	<!-- Footer section -->
 	<footer class="footer-section">
