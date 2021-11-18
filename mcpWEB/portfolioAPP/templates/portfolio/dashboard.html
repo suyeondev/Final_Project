@@ -82,7 +82,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link text-white " href="../sign-in.html">
+            <a class="nav-link text-white " href="https://www.musicow.com/">
               <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="material-icons opacity-10">login</i>
               </div>
@@ -144,72 +144,90 @@
     <div class="container-fluid py-4">
       <div class="row">
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card" id = "short_term_card">
-            <div class="card-header p-3 pt-2">
-              <div class="icon icon-lg icon-shape bg-gradient-warning shadow-warning text-center border-radius-xl mt-n4 position-absolute">
-                <img src="{%static 'img/illustrations/short-term.png'%}" border ="0" width="60px" height="60px" alt="단기 이미지">
+          {% if period == "short" %}
+            <div class="card  bg-gradient-warning" id = "short_term_card_checked">
+          {% else %}
+            <div class="card " id = "short_term_card">
+          {% endif %}
+              <div class="card-header p-3 pt-2">
+                <div class="icon icon-lg icon-shape bg-gradient-danger shadow-warning text-center border-radius-xl mt-n4 position-absolute">
+                  <img src="{%static 'img/illustrations/short-term.png'%}" border ="0" width="60px" height="60px" alt="단기 이미지">
+                </div>
+                <div class="text-end pt-1">
+                  <p class="text-sm mb-0 text-capitalize">투자 기간</p>
+                  <h4 class="mb-0">단기</h4>
+                </div>
               </div>
-              <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">투자 기간</p>
-                <h4 class="mb-0">단기</h4>
-              </div>
-            </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3">
+              <hr class="dark horizontal my-0">
+              <div class="card-footer p-3">
 
+              </div>
             </div>
-          </div>
+        </div>
+
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          {% if period == "long" %}
+            <div class="card  bg-gradient-warning" id = "long_term_card_checked">
+          {% else %}
+            <div class="card " id = "long_term_card">
+          {% endif %}
+              <div class="card-header p-3 pt-2">
+                <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
+                  <img src="{%static 'img/illustrations/long-term_color.png'%}" border ="0" width="60px" height="60px" alt="장기 이미지">
+                </div>
+                <div class="text-end pt-1">
+                  <p class="text-sm mb-0 text-capitalize">투자 기간</p>
+                  <h4 class="mb-0">장기</h4>
+                </div>
+              </div>
+              <hr class="dark horizontal my-0">
+              <div class="card-footer p-3">
+
+              </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          {% if invest_type == "안정형" %}
+            <div class="card  bg-gradient-warning" id = "safe_card_checked">
+          {% else %}
+            <div class="card " id = "safe_card">
+          {% endif %}
+              <div class="card-header p-3 pt-2">
+                <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
+                  <img src="{%static 'img/illustrations/investment-insurance.png'%}" border ="0" width="60px" height="60px" alt="장기 이미지">
+                </div>
+                <div class="text-end pt-1">
+                  <p class="text-sm mb-0 text-capitalize">투자 성향</p>
+                  <h4 class="mb-0">안정형</h4>
+                </div>
+              </div>
+              <hr class="dark horizontal my-0">
+              <div class="card-footer p-3">
+
+              </div>
+            </div>
         </div>
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card"  id = "long_term_card">
-            <div class="card-header p-3 pt-2">
-              <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
-                <img src="{%static 'img/illustrations/long-term_color.png'%}" border ="0" width="60px" height="60px" alt="장기 이미지">
+          {% if invest_type == "공격형" %}
+            <div class="card  bg-gradient-warning" id = "aggressive_card_checked">
+          {% else %}
+            <div class="card " id = "aggressive_card_default">
+          {% endif %}
+              <div class="card-header p-3 pt-2">
+                <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
+                  <img src="{%static 'img/illustrations/investment-risk.png'%}" border ="0" width="60px" height="60px" alt="장기 이미지">
+                </div>
+                <div class="text-end pt-1">
+                  <p class="text-sm mb-0 text-capitalize">투자 성향</p>
+                  <h4 class="mb-0">공격형</h4>
+                </div>
               </div>
-              <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">투자 기간</p>
-                <h4 class="mb-0">장기</h4>
-              </div>
-            </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3">
+              <hr class="dark horizontal my-0">
+              <div class="card-footer p-3">
 
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card"  id = "safe_card">
-            <div class="card-header p-3 pt-2">
-              <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
-                <img src="{%static 'img/illustrations/investment-insurance.png'%}" border ="0" width="60px" height="60px" alt="장기 이미지">
-              </div>
-              <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">투자 성향</p>
-                <h4 class="mb-0">안정형</h4>
               </div>
             </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3">
-
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6">
-          <div class="card"  id = "aggressive_card">
-            <div class="card-header p-3 pt-2">
-              <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
-                <img src="{%static 'img/illustrations/investment-risk.png'%}" border ="0" width="60px" height="60px" alt="장기 이미지">
-              </div>
-              <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">투자 성향</p>
-                <h4 class="mb-0">공격형</h4>
-              </div>
-            </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3">
-
-            </div>
-          </div>
         </div>
       </div>
     </div>

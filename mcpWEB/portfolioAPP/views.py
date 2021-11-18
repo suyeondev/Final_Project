@@ -1,12 +1,44 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.db.models import Q
 from .models import *
 import csv
 
 # Create your views here.
 def index(request):
     print('portfolioAPP index~~')
-    return render(request, 'portfolio/dashboard.html')
+    # survey 페이지에서 데이터 받아오기
+    if request.method == 'POST':
+        period= request.POST['period']
+        invest_type= request.POST['type']
+        money = request.POST['money']
+        musics = SongInfo.objects.all()
+
+        if (period == "short") & (invest_type == "안정"):
+            short_safe = SongInfo.objects.filter(Q(cluster_bs=0)|Q(cluster_bs=1)).order_by('-fee_near_year')
+
+        if (period == "long") & (invest_type == "공격"):
+            short_agg = SongInfo.objects.filter(Q(cluster_bs=2)).order_by('price')
+
+        if (period == "short") & (invest_type == "안정"):
+            long_safe = SongInfo.objects.filter(Q(cluster_bl=0) | Q(cluster_bl=1)).order_by('-fee_near_year','-price')
+
+        if (period == "long") & (invest_type == "공격"):
+            long_agg = SongInfo.objects.filter(Q(cluster_bl=2)).order_by('price','-fee_near_year')
+
+
+
+        context = {
+            'musics': musics,
+            'period': period,
+            'type': invest_type,
+            'money': money,
+            'short_safe' : short_safe,
+            'short_agg' : short_agg,
+            'long_safe': long_safe,
+            'long_agg' : long_agg
+        }
+    return render(request, 'portfolio/dashboard.html',context)
 
 def songInfo(request):
     print('portfolioAPP songinfo~~')
@@ -24,8 +56,9 @@ def csvToModel(request):
     csvList=[]
     for row in reader:
         print('row------',row)
-        csvList.append(Musics(title=row[0],
+        csvList.append(SongInfo(title=row[0],
                                artist=row[1],
+                               price=row[2],
                                fee_near_year=row[6],
                                album=row[8],
                                genre=row[9],
@@ -37,7 +70,7 @@ def csvToModel(request):
                                img_url=row[22],
                                writer=row[23],
                                composer=row[24],
-                               pub_date=[25]
+                               pub_date=row[25]
                               ))
-    Musics.objects.bulk_create(csvList)
+    SongInfo.objects.bulk_create(csvList)
     return HttpResponse('create model ok')
