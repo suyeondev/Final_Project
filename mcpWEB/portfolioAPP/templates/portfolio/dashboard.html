@@ -188,7 +188,7 @@
         </div>
 
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          {% if invest_type == "안정형" %}
+          {% if propensity == "sta" %}
             <div class="card  bg-gradient-warning" id = "safe_card_checked">
           {% else %}
             <div class="card " id = "safe_card">
@@ -209,7 +209,7 @@
             </div>
         </div>
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          {% if invest_type == "공격형" %}
+          {% if propensity == "agg" %}
             <div class="card  bg-gradient-warning" id = "aggressive_card_checked">
           {% else %}
             <div class="card " id = "aggressive_card_default">
@@ -259,76 +259,86 @@
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">투자비중(%)</th>
                     </tr>
                   </thead>
+
+                {% if  period == "short" and propensity == "sta" %}
                   <tbody>
+                    {% for ss in short_safe %}
                     <tr>
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
-                            <img src="{% get_static_prefix %}img/title_img/{{title_img_num}}.png" class="avatar avatar-sm me-3" alt="xd">
+                            <img src="{{ss.img_url}}" class="avatar avatar-sm me-3" alt="음원이미지">
                           </div>
                           <div class="d-flex flex-column justify-content-center">
-
                             <a href="#" id="product1"  onclick="fetchPage('songinfo')">
-                              <h6 class="mb-0 text-sm">title1</h6>
+                              <h6 class="mb-0 text-sm">{{ss.title}}</h6>
                             </a>
                           </div>
                         </div>
                       </td>
                       <td class="align-middle text-left text-sm">
                         <a href="#" >
-                          <span class="text-xs font-weight-bold"> ### </span>
+                          <span class="text-xs font-weight-bold">{{ss.artist}} </span>
                         </a>
                       </td>
                       <td class="align-middle text-center text-sm">
-                          <span class="text-xs font-weight-bold"> ### </span>
+                          <span class="text-xs font-weight-bold"> {{money}}*0.2  </span>
                       </td>
                       <td class="align-middle">
                         <div class="progress-wrapper w-75 mx-auto">
                           <div class="progress-info">
                             <div class="progress-percentage">
-                              <span class="text-xs font-weight-bold">###</span>
+                              <span class="text-xs font-weight-bold">20%</span>
                             </div>
                           </div>
                           <div class="progress">
-                            <div class="progress-bar bg-gradient-info w-60" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-gradient-info w-20" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                           </div>
                         </div>
                       </td>
                     </tr>
+                    {% endfor %}
+                {% endif %}
+                {% if  period == "short" and propensity == "agg" %}
+
+                    {% for sa in short_agg %}
                     <tr>
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
-                            <img src="{% get_static_prefix %}img/title_img/{{title_img_num}}.png" class="avatar avatar-sm me-3" alt="xd">
+                            <img src="{{sa.img_url}}" class="avatar avatar-sm me-3" alt="음원이미지">
                           </div>
                           <div class="d-flex flex-column justify-content-center">
                             <a href="javascript:;" >
-                              <h6 class="mb-0 text-sm">###</h6>
+                              <h6 class="mb-0 text-sm">{{sa.title}}</h6>
                             </a>
                           </div>
                         </div>
                       </td>
                       <td class="align-middle text-left text-sm">
                         <a href="javascript:;" >
-                          <span class="text-xs font-weight-bold"> ### </span>
+                          <span class="text-xs font-weight-bold">{{sa.artist}} </span>
                         </a>
                       </td>
                       <td class="align-middle text-center text-sm">
-                          <span class="text-xs font-weight-bold"> ### </span>
+                          <span class="text-xs font-weight-bold"> {{money}} </span>
                       </td>
                       <td class="align-middle">
                         <div class="progress-wrapper w-75 mx-auto">
                           <div class="progress-info">
                             <div class="progress-percentage">
-                              <span class="text-xs font-weight-bold">###</span>
+                              <span class="text-xs font-weight-bold">20%</span>
                             </div>
                           </div>
                           <div class="progress">
-                            <div class="progress-bar bg-gradient-info w-60" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-gradient-info w-20" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                           </div>
                         </div>
                       </td>
                     </tr>
+
+                  {% endfor %}
+                {% endif %}
                     <tr>
                       <td>
                         <div class="d-flex px-2 py-1">
@@ -550,7 +560,7 @@
             <div class="card-header pb-0">
               <h5>투자 금액</h5>
               <p class="text-dark" >
-                <span class="font-weight-bold" style="font-size:20pt">###원</span> <a href="https://www.musicow.com/">
+                <span class="font-weight-bold" style="font-size:20pt">{{money}}원</span> <a href="https://www.musicow.com/">
                       <img src="{%static 'img/logos/musicow_logo.png' %}" width ="40px" height="35px" style="float:right">
                     </a>
               </p>

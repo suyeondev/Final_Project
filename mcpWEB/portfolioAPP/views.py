@@ -9,35 +9,29 @@ def index(request):
     print('portfolioAPP index~~')
     # survey 페이지에서 데이터 받아오기
     if request.method == 'POST':
-        period= request.POST['period']
-        invest_type= request.POST['type']
-        money = request.POST['money']
+        period= request.POST.get('period')
+        propensity= request.POST.get('propensity')
+        money = request.POST.get('money')
         musics = SongInfo.objects.all()
-
-        if (period == "short") & (invest_type == "안정"):
-            short_safe = SongInfo.objects.filter(Q(cluster_bs=0)|Q(cluster_bs=1)).order_by('-fee_near_year')
-
-        if (period == "long") & (invest_type == "공격"):
-            short_agg = SongInfo.objects.filter(Q(cluster_bs=2)).order_by('price')
-
-        if (period == "short") & (invest_type == "안정"):
-            long_safe = SongInfo.objects.filter(Q(cluster_bl=0) | Q(cluster_bl=1)).order_by('-fee_near_year','-price')
-
-        if (period == "long") & (invest_type == "공격"):
-            long_agg = SongInfo.objects.filter(Q(cluster_bl=2)).order_by('price','-fee_near_year')
-
-
-
         context = {
             'musics': musics,
             'period': period,
-            'type': invest_type,
+            'propensity': propensity,
             'money': money,
-            'short_safe' : short_safe,
-            'short_agg' : short_agg,
-            'long_safe': long_safe,
-            'long_agg' : long_agg
         }
+        print('period : {}, propensity: {}, money : {}'.format(period, propensity, money))
+        if (period == "short") & (propensity == "sta"):
+            context['short_safe'] = SongInfo.objects.filter(Q(cluster_bs=0)|Q(cluster_bs=1)).order_by('-fee_near_year','-price')
+
+        if (period == "short") & (propensity == "agg"):
+            context['short_agg'] = SongInfo.objects.filter(Q(cluster_bs=2)).order_by('price','-fee_near_year')
+
+        if (period == "long") & (propensity == "sta"):
+            context['long_safe'] = SongInfo.objects.filter(Q(cluster_bl=0) | Q(cluster_bl=1)).order_by('-fee_near_year','-price')
+
+        if (period == "long") & (propensity == "agg"):
+            context['long_agg'] = SongInfo.objects.filter(Q(cluster_bl=2)).order_by('price','-fee_near_year')
+
     return render(request, 'portfolio/dashboard.html',context)
 
 def songInfo(request):
