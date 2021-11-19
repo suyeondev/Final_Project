@@ -72,6 +72,12 @@ def index(request):
 
 def songInfo(request):
     print('portfolioAPP songinfo~~')
+    # portfolio 페이지에서 데이터 받아오기
+
+    title = request.GET.get("songtitle")
+    #musics = SongInfo.objects.all()
+    print('title : {}'.format(title))
+
     return render(request, 'portfolio/songinfo.html')
 
 def survey(request):
@@ -104,3 +110,7 @@ def csvToModel(request):
                               ))
     SongInfo.objects.bulk_create(csvList)
     return HttpResponse('create model ok')
+
+def predict(request):
+    print('portfolioAPP predict')
+    return render(request, 'portfolio/predict.html')

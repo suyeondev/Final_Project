@@ -9,30 +9,42 @@
 <section class="card">
 	<div class="card_head" >
 		<p> </p>
-        <img src="https://d1z4u1c8ot3who.cloudfront.net/song/210303/73eca192.jpg" class="img-fluid" style="display:block; margin-left:auto; margin-right:auto;" >
-		<h5 style="display: flex; justify-content: center;"><br> 음악 저작권 이름</h5>
+        <img src="https://d1z4u1c8ot3who.cloudfront.net/song/210105/ab65f19a.jpg" class="img-fluid" style="display:block; margin-left:auto; margin-right:auto;" >
+		<h5 style="display: flex; justify-content: center;"><br> Beautiful </h5>
 
 	</div>
 	<div class="card_body">
 		<div class="lst_copy_info" > <br>
 			<dl style="display:inline">
-				<dt>가수</dt><dd>멜로망스</dd>
-				<dt>앨범명</dt><dd>멜로망스</dd>
-				<dt>장르</dt><dd>멜로망스</dd>
-				<dt>작곡</dt><dd>김민석, 정동환</dd>
-				<dt>작사</dt><dd>김민석</dd>
-				<dt>유통사</dt><dd>MPMG</dd>
-				<dt>최근 1년 저작권료 (1주 기준)</dt><dd>2,391원</dd>
-				<a href="https://www.musicow.com/market?tab=list&sortorder=&keyword=">
+				<dt>가수</dt><dd>Crush</dd>
+				<dt>앨범명</dt><dd>도깨비 OST Part 4 (tvN 금토드라마)</dd>
+				<dt>장르</dt><dd>드라마 / OST</dd>
+				<dt>작곡</dt><dd>황찬희, 이승주</dd>
+				<dt>작사</dt><dd>지훈</dd>
+				<dt>유통사</dt><dd>지니뮤직, Stone Music Entertainment</dd>
+				<dt>최근 1년 저작권료 (1주 기준)</dt><dd>1338원</dd>
+				<a href="https://www.musicow.com/market?tab=list&sortorder=&keyword=beautiful">
 						<img src="{%static 'img/go_to_musicow.jpg' %}">
 				</a>
-
+				<a href="#main/predict"  onclick="fetchPage('predict')" >
+						<img src="{%static 'img/3m_show_predict.jpg' %}">
+				</a>
 
 
 			</dl>
 		</div>
 	</div>
 </section>
+  <script>
+    function fetchPage(name){
+      fetch(name).then(function(response){
+        response.text().then(function(text){
+          document.querySelector('article').innerHTML=text;
+
+        })
+      });
+    }
+  </script>
 
 </body>
 
