@@ -57,7 +57,7 @@
 			<li><a href="http://127.0.0.1:8000/main/index/">Home</a></li>
 			<li><a href="http://127.0.0.1:8000/main/index/#why_3m">About 3M</a></li>
 			<li><a href="http://127.0.0.1:8000/portfolio/survey/">Portfolio</a></li>
-			<li><a href="contact.html">Contact</a></li>
+			<li><a href="https://www.musicow.com/auctions?tab=guide">Music copyright</a></li>
 		</ul>
 	</header>
 
@@ -272,7 +272,7 @@
                             <img src="{{ss.img_url}}" class="avatar avatar-sm me-3" alt="음원이미지">
                           </div>
                           <div class="d-flex flex-column justify-content-center">
-                            <a href="#" id="product1"  onclick="fetchPage('songinfo')">
+                            <a href="#"  onclick="fetchPage('songinfo')">
                               <h6 class="mb-0 text-sm">{{ss.title}}</h6>
                             </a>
                           </div>
@@ -378,9 +378,10 @@
                             <img src="https://d1z4u1c8ot3who.cloudfront.net/song/210105/eb5e388c.jpg" class="avatar avatar-sm me-3" alt="음원이미지">
                           </div>
                           <div class="d-flex flex-column justify-content-center">
-                            <a href="javascript:;" >
+                            <a href="#" id=""  onclick="fetchPage('songinfo')">
                               <h6 class="mb-0 text-sm">I Can't</h6>
                             </a>
+
                           </div>
                         </div>
                       </td>
@@ -1037,14 +1038,6 @@
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
   </script>
-	$(document).ready(function() {
-		$("#product1").click(function(e) {
-			alert('btn click');
-            e.preventDefault();
-		})
-
-
-	})
 
 
   <script>
@@ -1052,6 +1045,7 @@
       fetch(name).then(function(response){
         response.text().then(function(text){
           document.querySelector('article').innerHTML=text;
+
         })
       });
     }
