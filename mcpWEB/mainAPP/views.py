@@ -7,4 +7,8 @@ def index(request):
     return render(request, 'main/main.html')
 
 
+def about(request):
+    print('mainAPP about3m~~')
+    return render(request, 'main/about3m.html')
+
 # Create your views here.
