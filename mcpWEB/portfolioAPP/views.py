@@ -14,7 +14,6 @@ def index(request):
         money = request.POST.get('money')
         musics = SongInfo.objects.all()
         per = [0.2,0.15,0.1,0.1,0.1,0.05,0.05]
-
         la_ss_per=[0.25,0.2,0.15,0.1,0.1,0.1,0.05,0.05]
         seed = []
         for i in per:
@@ -35,6 +34,8 @@ def index(request):
         first_seed = round(0.25 * float(money))
         last_seed =  round(0.05 * float(money))
         print('period : {}, propensity: {}, money : {}'.format(period, propensity, money))
+
+        # 투자 성향에 따라 모델에서 음원 필터링해서 가져오기
         if (period == "short") & (propensity == "sta"):
             short_safe = SongInfo.objects.filter(Q(Q(cluster_bs=0) | Q(cluster_bs=1))&Q(price__lte = money)).order_by('-fee_near_year','-price')[:8]
 
@@ -46,12 +47,11 @@ def index(request):
 
         if (period == "long") & (propensity == "agg"):
             long_agg = SongInfo.objects.filter(Q(cluster_bl=2)&Q(price__lte = money)).order_by('price','-fee_near_year')[:8]
-
+        # zip 함수를 사용해서 4가지 유형별 음원리스트랑, 투자금액, 투자비중값 한꺼번에 변수에 담기
         ss_zip = zip(short_safe,la_ss_per, la_ss_seed,la_ss_per_txt)
         sa_zip = zip(short_agg, per, seed,per_txt)
         ls_zip = zip(long_safe, per, seed,per_txt)
         la_zip = zip(long_agg, la_ss_per, la_ss_seed, la_ss_per_txt)
-
         context = {
             'period': period,
             'propensity': propensity,
@@ -114,3 +114,18 @@ def csvToModel(request):
 def predict(request):
     print('portfolioAPP predict')
     return render(request, 'portfolio/predict.html')
+
+def songInfoIcant(request):
+    print('portfolioAPP songinfoIcant~~')
+    # portfolio 페이지에서 데이터 받아오기
+
+    title = request.GET.get("songtitle")
+    #musics = SongInfo.objects.all()
+    print('title : {}'.format(title))
+
+    return render(request, 'portfolio/songinfo_icant.html')
+
+
+def predictIcant(request):
+    print('portfolioAPP predictIcant')
+    return render(request, 'portfolio/predict_icant.html')
