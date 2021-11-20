@@ -90,7 +90,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white " href="https://www.youtube.com/watch?v=0fL698y4bXs">
+            <a class="nav-link text-white " href="https://www.musicow.com/about/invest">
               <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="material-icons opacity-10">assignment</i>
               </div>
@@ -259,11 +259,8 @@
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">투자비중(%)</th>
                     </tr>
                   </thead>
-
-                <!--- 단기 안정형 --->
-
+                <!--- 단기 안정형 음원 테이블 부분 --->
                 {% if  period == "short" and propensity == "sta" %}
-
                   <tbody>
                     {% for ss , p , s, pt in ss_zip %}
                     <tr>
@@ -273,16 +270,14 @@
                             <img src="{{ss.img_url}}" class="avatar avatar-sm me-3" alt="음원이미지">
                           </div>
                           <div class="d-flex flex-column justify-content-center">
-
-                              <a href="#songinfo/?songtitle={{ss.title}}" data-value="{{ss.title}}" onclick="fetchPage('songinfo')"  >
+                              <a href="#songinfo/?songtitle={{ss.title}}"  onclick="fetchPage('songinfo')"  >
                                 <h6 class="mb-0 text-sm">{{ss.title}}</h6>
                               </a>
-
                           </div>
                         </div>
                       </td>
                       <td class="align-middle text-left text-sm">
-                        <a href="#" >
+                        <a href="https://www.musicow.com/market?tab=list&sortorder=&keyword={{ss.artist}}" >
                           <span class="text-xs font-weight-bold">{{ss.artist}} </span>
                         </a>
                       </td>
@@ -381,7 +376,7 @@
                             <img src="https://d1z4u1c8ot3who.cloudfront.net/song/210105/eb5e388c.jpg" class="avatar avatar-sm me-3" alt="음원이미지">
                           </div>
                           <div class="d-flex flex-column justify-content-center">
-                            <a href="#" id=""  onclick="fetchPage('songinfo')">
+                            <a href="#" id=""  onclick="fetchPage('songinfo_icant')">
                               <h6 class="mb-0 text-sm">I Can't</h6>
                             </a>
 
@@ -512,7 +507,7 @@
                         <div class="progress-wrapper w-75 mx-auto">
                           <div class="progress-info">
                             <div class="progress-percentage">
-                              <span class="text-xs font-weight-bold">{{pt}}</span>
+                              <span class="text-xs font-weight-bold">{{pt}} %</span>
                             </div>
                           </div>
                           <div class="progress">
@@ -552,7 +547,7 @@
                         <div class="progress-wrapper w-75 mx-auto">
                           <div class="progress-info">
                             <div class="progress-percentage">
-                              <span class="text-xs font-weight-bold">{{pt}}</span>
+                              <span class="text-xs font-weight-bold">{{pt}} %</span>
                             </div>
                           </div>
                           <div class="progress">
