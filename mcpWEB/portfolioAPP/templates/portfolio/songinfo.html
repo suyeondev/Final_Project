@@ -26,25 +26,10 @@
 				<a href="https://www.musicow.com/market?tab=list&sortorder=&keyword=beautiful">
 						<img src="{%static 'img/go_to_musicow.jpg' %}">
 				</a>
-				<a href="#main/predict"  onclick="fetchPage('predict')" >
-						<img src="{%static 'img/3m_show_predict.jpg' %}">
-				</a>
-
-
 			</dl>
 		</div>
 	</div>
 </section>
-  <script>
-    function fetchPage(name){
-      fetch(name).then(function(response){
-        response.text().then(function(text){
-          document.querySelector('article').innerHTML=text;
-
-        })
-      });
-    }
-  </script>
 
 </body>
 

@@ -257,6 +257,7 @@
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Artist</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">투자금액(원)</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">투자비중(%)</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">예측정보</th>
                     </tr>
                   </thead>
                 <!--- 단기 안정형 음원 테이블 부분 --->
@@ -296,6 +297,11 @@
                           </div>
                         </div>
                       </td>
+                      <td class="align-middle text-left text-sm">
+                        <a href="#" >
+                            <img src="{%static 'img/predict_btn.png' %}">
+                        </a>
+                      </td>
                     </tr>
                     {% endfor %}
                     <tr>
@@ -331,6 +337,11 @@
                           </div>
                         </div>
                       </td>
+                      <td class="align-middle text-left text-sm">
+                        <a href="#" >
+                            <img src="{%static 'img/predict_btn.png' %}">
+                        </a>
+                      </td>
                     </tr>
                     <tr>
                       <td>
@@ -364,6 +375,11 @@
                             <div class="progress-bar bg-gradient-info w-5" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
                           </div>
                         </div>
+                      </td>
+                      <td class="align-middle text-left text-sm">
+                        <a href="#" >
+                            <img src="{%static 'img/predict_btn.png' %}">
+                        </a>
                       </td>
                     </tr>
                 {% endif %}
@@ -403,7 +419,13 @@
                           </div>
                         </div>
                       </td>
+                      <td class="align-middle text-left text-sm">
+                        <a href="#" id="icant_predict">
+                            <img src="{%static 'img/predict_btn.png' %}">
+                        </a>
+                      </td>
                     </tr>
+
                     {% for sa , p , s, pt in sa_zip %}
                     <tr>
                       <td>
@@ -438,6 +460,11 @@
                           </div>
                         </div>
                       </td>
+                      <td class="align-middle text-left text-sm">
+                        <a href="#" >
+                            <img src="{%static 'img/predict_btn.png' %}">
+                        </a>
+                      </td>
                     </tr>
 
                     {% endfor %}
@@ -455,7 +482,6 @@
                             <a href="#songinfo/?songtitle=Beautiful"  onclick="fetchPage('songinfo')"  >
                                 <h6 class="mb-0 text-sm">Beautiful</h6>
                             </a>
-
                           </div>
                         </div>
                       </td>
@@ -478,6 +504,11 @@
                             <div class="progress-bar bg-gradient-info w-25" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                           </div>
                         </div>
+                      </td>
+                      <td class="align-middle text-left text-sm">
+                        <a href="#" id="beautiful_predict">
+                            <img src="{%static 'img/predict_btn.png' %}">
+                        </a>
                       </td>
                     </tr>
 
@@ -514,6 +545,11 @@
                             <div class="progress-bar bg-gradient-info w-{{pt}}" role="progressbar" aria-valuenow="{{pt}}" aria-valuemin="0" aria-valuemax="100"></div>
                           </div>
                         </div>
+                      </td>
+                      <td class="align-middle text-left text-sm">
+                        <a href="#" >
+                            <img src="{%static 'img/predict_btn.png' %}">
+                        </a>
                       </td>
                     </tr>
                     {% endfor %}
@@ -554,6 +590,11 @@
                             <div class="progress-bar bg-gradient-info w-{{pt}}" role="progressbar" aria-valuenow="{{pt}}" aria-valuemin="0" aria-valuemax="100"></div>
                           </div>
                         </div>
+                      </td>
+                      <td class="align-middle text-left text-sm">
+                        <a href="#" >
+                            <img src="{%static 'img/predict_btn.png' %}">
+                        </a>
                       </td>
                     </tr>
                     {% endfor %}
@@ -596,6 +637,34 @@
             </div>
           </div>
         </div>
+
+        <p>
+
+        </p>
+      <!--차트부분-->
+      <div class="container-fluid py-4">
+        <div class="row mt-4">
+            <div class="container">
+              <div class="card z-index-2 ">
+                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+                  <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
+                    <div class="chart">
+                      <canvas id="chart-line" class="chart-canvas" height="170"></canvas>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card-body">
+                  <h6 class="mb-0 " id="choice_title">예측정보를 보고싶은 음원을 선택하세요.</h6>
+                  <hr class="dark horizontal">
+                  <div class="d-flex ">
+                    <p class="mb-0 text-sm" id="choice_pred_pct"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
 
 
       <footer class="footer py-4  ">
@@ -742,5 +811,222 @@
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{%static 'js/material-dashboard.js' %}"></script>
 </body>
+  <script>
+
+
+  </script>
+  <script>
+    $(document).ready(function(){
+      icant_real_data = ""
+      icant_pred_data = ""
+      beautiful_real_data = ""
+      beautiful_pred_data = ""
+        $('#icant_predict').click(function(){
+            $('#choice_title').text("I Can't의 앞으로 3일간의 거래가격 예측그래프입니다")
+            $('#choice_pred_pct').text("앞으로 3일간 현재거래가에서 약 28% 상승할것으로 예측됩니다")
+            icant_real_data = [107742,104300,92642,90700]
+            icant_pred_data = [107811,109140,112750,115847,116579,11,116968]
+            var ctx = document.getElementById("chart-line").getContext("2d");
+
+            new Chart(ctx, {
+              type: "line",
+              data: {
+                labels: ["11월 첫째주","11월 둘째주","11월 셋째주","11.22","11.23","11.24","11.25"],
+                datasets: [{
+                  label: "real",
+                  tension: 0,
+                  borderWidth: 0,
+                  pointRadius: 5,
+                  pointBackgroundColor: "rgba(0, 0, 0, .8)",
+                  pointBorderColor: "transparent",
+                  borderColor: "rgba(0, 0, 0, .8)",
+                  borderColor: "rgba(0, 0, 0, .8)",
+                  borderWidth: 4,
+                  backgroundColor: "transparent",
+                  fill: true,
+                  data: icant_real_data,
+                  maxBarThickness: 6
+
+                },{
+                  label: "predict",
+                  tension: 0,
+                  borderWidth: 0,
+                  pointRadius: 5,
+                  pointBackgroundColor: "rgba(255, 255, 255, .8)",
+                  pointBorderColor: "transparent",
+                  borderColor: "rgba(255, 255, 255, .8)",
+                  borderColor: "rgba(255, 255, 255, .8)",
+                  borderWidth: 4,
+                  backgroundColor: "transparent",
+                  fill: true,
+                  data: icant_pred_data,
+                  maxBarThickness: 6
+                }],
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                  legend: {
+                    display: false,
+                  }
+                },
+                interaction: {
+                  intersect: false,
+                  mode: 'index',
+                },
+                scales: {
+                  y: {
+                    grid: {
+                      drawBorder: false,
+                      display: true,
+                      drawOnChartArea: true,
+                      drawTicks: false,
+                      borderDash: [5, 5],
+                      color: 'rgba(255, 255, 255, .2)'
+                    },
+                    ticks: {
+                      display: true,
+                      color: '#f8f9fa',
+                      padding: 10,
+                      font: {
+                        size: 14,
+                        weight: 300,
+                        family: "Roboto",
+                        style: 'normal',
+                        lineHeight: 2
+                      },
+                    }
+                  },
+                  x: {
+                    grid: {
+                      drawBorder: false,
+                      display: false,
+                      drawOnChartArea: false,
+                      drawTicks: false,
+                      borderDash: [5, 5]
+                    },
+                    ticks: {
+                      display: true,
+                      color: '#f8f9fa',
+                      padding: 10,
+                      font: {
+                        size: 14,
+                        weight: 300,
+                        family: "Roboto",
+                        style: 'normal',
+                        lineHeight: 2
+                                          },
+                  }
+                },
+              },
+            },
+          });
+        });
+
+        $('#beautiful_predict').click(function(){
+          $('#choice_title').text("Beautiful의 앞으로 3일간의 거래가격 예측그래프입니다")
+          $('#choice_pred_pct').text("앞으로 3일간 현재거래가에서 약 36% 상승할것으로 예측됩니다")
+		  beautiful_real_data = [74928, 78371, 71771, 64900, 65900]
+		  beautiful_pred_data = [83224, 83876, 86882,89261,89962,90086,90285 ]
+		  var ctx = document.getElementById("chart-line").getContext("2d");
+
+		  new Chart(ctx, {
+            type: "line",
+            data: {
+              labels: ["11월 첫째주","11월 둘째주","11월 셋째주","11.22","11.23","11.24","11.25"],
+              datasets: [{
+                label: "real",
+                tension: 0,
+                borderWidth: 0,
+                pointRadius: 5,
+                pointBackgroundColor: "rgba(0, 0, 0,.8)",
+                pointBorderColor: "transparent",
+                borderColor: "rgba(0, 0, 0, .8)",
+                borderColor: "rgba(0, 0, 0, .8)",
+                borderWidth: 4,
+                backgroundColor: "transparent",
+                fill: true,
+                data: beautiful_real_data,
+                maxBarThickness: 6
+
+              },{
+                label:"predict",
+                tension: 0,
+                borderWidth: 0,
+                pointRadius: 5,
+                pointBackgroundColor: "rgba(255, 255, 255, .8)",
+                pointBorderColor: "transparent",
+                borderColor: "rgba(255, 255, 255, .8)",
+                borderColor: "rgba(255, 255, 255, .8)",
+                borderWidth: 4,
+                backgroundColor: "transparent",
+                fill: true,
+                data: beautiful_pred_data,
+                maxBarThickness: 6
+              }],
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: {
+                  display: false,
+                }
+              },
+              interaction: {
+                intersect: false,
+                mode: 'index',
+              },
+              scales: {
+                y: {
+                  grid: {
+                    drawBorder: false,
+                    display: true,
+                    drawOnChartArea: true,
+                    drawTicks: false,
+                    borderDash: [5, 5],
+                    color: 'rgba(255, 255, 255, .2)'
+                  },
+                  ticks: {
+                    display: true,
+                    color: '#f8f9fa',
+                    padding: 10,
+                    font: {
+                      size: 14,
+                      weight: 300,
+                      family: "Roboto",
+                      style: 'normal',
+                      lineHeight: 2
+                    },
+                  }
+                },
+                x: {
+                  grid: {
+                    drawBorder: false,
+                    display: false,
+                    drawOnChartArea: false,
+                    drawTicks: false,
+                    borderDash: [5, 5]
+                  },
+                  ticks: {
+                    display: true,
+                    color: '#f8f9fa',
+                    padding: 10,
+                    font: {
+                      size: 14,
+                      weight: 300,
+                      family: "Roboto",
+                      style: 'normal',
+                      lineHeight: 2
+                    },
+                  }
+                },
+              },
+            },
+          });
+        });
+    });
+  </script>
 
 </html>
