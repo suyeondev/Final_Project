@@ -43,6 +43,23 @@
 		}
 
 	</style>
+	<script>
+
+		function inputNumberFormat(obj) {
+
+     		obj.value = comma(uncomma(obj.value));
+ 		}
+
+		 function comma(str) {
+			 str = String(str);
+			 return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+		 }
+
+		 function uncomma(str) {
+			 str = String(str);
+			 return str.replace(/[^\d]+/g, '');
+		 }
+	</script>
 </head>
 <body>
 	<!-- Page Preloder -->
@@ -87,11 +104,14 @@
 					</p>
 					<h3 class="typeTitle" align="center" style="font-size:45px; font-family:Dongle">당신에게 꼭 맞는 <br>포트폴리오를 추천해드립니다</h3>
                     <p><b></b></p>
-					<p class="typeDesc" align="center" style="font-size:16px; font-family:Yeon sung" >투자금액, 투자기간, 투자성향에 따라 유형별 포트폴리오를 제시해 드립니다. <br>원하시는 항목을 선택해주세요!</p>
+					<p class="typeDesc" align="center" style="font-size:20px; font-family:Yeon sung" >투자금액, 투자기간, 투자성향에 따라 유형별 포트폴리오를 <br>제시해 드립니다. 원하시는 항목을 선택해주세요!</p>
 				    <p class="typeDesc" align = "center" style="font-size:20px; font-family:Yeon Sung">당신의 투자 금액은?</p>
 				    	<div style="text-align:center;">
-						<input id="money" type="text" name="money"
+						<input id="money" type="text" name="money" onkeyup="inputNumberFormat(this)"
 							   style="text-align:right; padding-right: 10px;">원
+
+
+
 
 					</div>
 				    	<p>
@@ -177,6 +197,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="{%static 'js/owl.carousel.min.js' %}"></script>
 	<script src="{%static 'js/mixitup.min.js' %}"></script>
 	<script src="{%static 'js/main.js' %}"></script>
+    <script>
+    $(document).ready(function() {
+
+
+    })
 
 	</body>
 </html>
