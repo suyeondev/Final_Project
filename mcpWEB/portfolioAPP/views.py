@@ -47,6 +47,7 @@ def index(request):
 
         if (period == "long") & (propensity == "agg"):
             long_agg = SongInfo.objects.filter(Q(cluster_bl=2)&Q(price__lte = money)).order_by('price','-fee_near_year')[:8]
+
         # zip 함수를 사용해서 4가지 유형별 음원리스트랑, 투자금액, 투자비중값 한꺼번에 변수에 담기
         ss_zip = zip(short_safe,la_ss_per, la_ss_seed,la_ss_per_txt)
         sa_zip = zip(short_agg, per, seed,per_txt)

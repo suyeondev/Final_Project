@@ -930,13 +930,13 @@
           $('#choice_title').text("Beautiful의 거래가격 예측그래프입니다")
           $('#choice_pred_pct').text("현재거래가에서 상승할것으로 예측됩니다")
 		  beautiful_real_data = [31225.8,30757.1,31351.6,56333.3,52383.8,53333.3,43774.1,63083.8,94613.3,87680.6,65500]
-		  beautiful_pred_data = [31119.7,32431.2,34582.8,49381.9,49856.1,54123,55268,65448.2,80037.2,84867.1,89261.9,89962,90086.6,90285.5]
+		  beautiful_pred_data = [31119.7,32431.2,34582.8,49381.9,49856.1,54123,55268,65448.2,80037.2,84867.1,89261.9,89962]
 		  var ctx = document.getElementById("chart-line").getContext("2d");
 
 		  new Chart(ctx, {
             type: "line",
             data: {
-              labels: ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11.22","11.23","11.24","11.25"],
+              labels: ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11.22","11.23"],
               datasets: [{
                 label: "real",
                 tension: 0,
@@ -973,7 +973,7 @@
               maintainAspectRatio: false,
               plugins: {
                 legend: {
-                  display: false,
+                  display: true,
                 }
               },
               interaction: {
